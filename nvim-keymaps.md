@@ -256,3 +256,16 @@ da linha — clique no fold abre/fecha, clique no sinal de diagnóstico abre o f
 - **Quickfix** com preview (nvim-bqf).
 - **Diagnósticos**: sem texto inline; float automático sob o cursor (vira e fecha sozinho).
 - **`vim.*` completion** nos `.lua` da config (lazydev).
+
+## 23. Movimento e scroll (neoscroll + precognition)
+
+| Tecla | Ação |
+|---|---|
+| `Ctrl+d` / `Ctrl+u` | scroll suave de meia tela (com animação) |
+| `Ctrl+f` / `Ctrl+b` | scroll suave de tela cheia |
+| `zt` / `zz` / `zb` | centraliza a linha no topo/meio/fundo com animação |
+| dicas `w b e ^ $ %` | aparecem em texto virtual na linha do cursor (precognition) |
+
+- `:Precognition toggle` — liga/desliga as dicas de movimento.
+- As dicas nativas de `f`/`F` ficam desligadas porque o `f` é do hop.
+- Kitty: rastro de cursor animado (`cursor_trail 6.0` no `kitty.conf`; `0` desliga).

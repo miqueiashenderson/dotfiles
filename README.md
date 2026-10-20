@@ -65,6 +65,7 @@ O `install.sh` faz backup automático (`~/.config/nvim.bak.<data>`) se já exist
 | Dobras | `nvim-ufo` + statuscolumn (`zR`/`zM`, peek com `<leader>K`) |
 | Text objects | treesitter: `af/if`, `ac/ic`, `aa/ia` + movimento `]f ]c ]a` |
 | Edição | `f` = pulo na tela toda (hop), histórico de yank (`[y ]y`, `<leader>p`), mover linha `Alt+j/k`, colorizer, illuminate, dropbar, indentscope |
+| Movimento | scroll suave `Ctrl+d/u/f/b` + `zt/zz/zb` (neoscroll), dicas de movimento em virtual text (precognition), rastro de cursor no kitty (`cursor_trail`) |
 | Diagnósticos | sem texto inline; float sob o cursor + `<space>Q` → quickfix |
 | Terminal | FTerm flutuante (`Alt+i`), split estilo VSCode |
 | Tema | `tokyonight-night` no nvim + kitty, fundo translúcido |
@@ -77,7 +78,7 @@ Leader = `Espaço`. Detalhes completos nos `*-keymaps.md`.
 - `<leader>ff/fg` arquivos/grep · `<leader>xx` diagnósticos
 - `gd/gr/K` LSP · `Espaço ca` code action · `Espaço f` formatar · `Espaço gd` glance
 - `af/if` text object (função) · `]f/[f` próxima função · `zR/zM` dobras
-- `f` pula na tela toda (hop) · `[y/]y` histórico de yank
+- `f` pula na tela toda (hop) · `[y/]y` histórico de yank · `Ctrl+d/u` scroll suave
 - `Alt+j/k` mover linha · `Espaço Espaço` limpar espaços · `ZR` recarregar config
 - `F5` debug · `<leader>b` breakpoint · `<leader>qs` sessão
 
@@ -98,4 +99,5 @@ Leader = `Espaço`. Detalhes completos nos `*-keymaps.md`.
 - **treesitter na branch main**: o `ensure_installed` antigo não existe mais — os parsers são listados em `ts.install{}` em `lua/plugins/nvim-treesitter.lua` e o realce liga por autocmd `FileType`. Exige `tree-sitter-cli`.
 - **Diagnósticos sem texto inline** (`virtual_text = false`): o float aparece sozinho sob o cursor. Pra voltar ao texto inline, edite `lua/config/diagnostics.lua`.
 - **`f` do hop**: pula pra qualquer lugar da tela (não só a linha). Reverta removendo o keymap em `lua/plugins/hop.lua`.
+- **kitty**: tema atual é `cyberdream` (`include cyberdream.conf` no kitty.conf); rastro de cursor com `cursor_trail 6.0` (exige kitty >= 0.37).
 # dotfiles
