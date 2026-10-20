@@ -54,7 +54,6 @@ Plug('nvim-mini/mini.indentscope')
 
 -- Movimento e efeitos
 Plug('karb94/neoscroll.nvim')
-Plug('tris203/precognition.nvim')
 
 -- Temas alternativos (descomente se quiser trocar):
 -- Plug('AlexvZyl/nordic.nvim', { ['branch'] = 'main' })
@@ -134,4 +133,3 @@ require("plugins.colorizer")   -- #ff0000 pintado na cor real
 require("plugins.dropbar")     -- winbar com caminho do arquivo
 require("plugins.indentscope") -- guia de indentação
 require("plugins.neoscroll")   -- scroll suave (Ctrl+d/u)
-require("plugins.precognition")-- dicas de movimento em virtual text
