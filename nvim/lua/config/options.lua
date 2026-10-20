@@ -35,13 +35,14 @@ o.splitright = true
 o.splitbelow = true
 o.completeopt = "menu,menuone,noselect"
 
-vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    underline = true,
-    update_in_insert = true,
-    severity_sort = true,
-})
+-- Folding (nvim-ufo abre/fecha com zR/zM)
+o.foldcolumn = "1"
+o.foldlevel = 99
+o.foldlevelstart = 99
+o.foldenable = true
+
+-- Diagnósticos (virtual_text off + float no CursorHold) ficam em
+-- lua/config/diagnostics.lua
 
 vim.cmd.colorscheme('tokyonight-night')
 -- Alternativa: vim.cmd.colorscheme('cyberdream')

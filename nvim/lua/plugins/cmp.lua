@@ -46,9 +46,10 @@ cmp.setup({
 
     -- Fontes de onde o `cmp` vai buscar sugestões
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' }, -- Sugestões do LSP
-        { name = 'luasnip' },  -- Sugestões de Snippets
-        { name = 'buffer' },   -- Sugestões do texto no buffer atual
-        { name = 'path' },     -- Sugestões de caminhos de arquivo
+        { name = 'lazydev', group_index = 0 }, -- API do Neovim (group 0 = sempre ativo)
+        { name = 'nvim_lsp' },  -- Sugestões do LSP
+        { name = 'luasnip' },   -- Sugestões de Snippets
+        { name = 'buffer' },    -- Sugestões do texto no buffer atual
+        { name = 'path' },      -- Sugestões de caminhos de arquivo
     })
 })

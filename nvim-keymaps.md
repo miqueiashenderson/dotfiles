@@ -179,3 +179,80 @@ Sessão é **por pasta**. Salva sozinha ao sair (`:qa`).
 | `:Mason` | Painel de LSPs/formatadores |
 | `:MasonToolsInstall` | Instala formatadores/linters do `tool-installer.lua` |
 | `:MasonInstall java-debug-adapter java-test` | Libera debug/teste Java |
+
+## 17. Text objects — treesitter (`nvim-treesitter-textobjects`)
+
+Seleção (use no modo visual ou depois de um operador: `d`, `c`, `y`…):
+
+| Tecla | Seleciona |
+|---|---|
+| `af` / `if` | função inteira / interior da função |
+| `ac` / `ic` | classe inteira / interior da classe |
+| `aa` / `ia` | parâmetro / interior do parâmetro |
+
+Exemplos: `dif` (apaga a função), `yac` (copia a classe), `ci`+`if`…
+
+Movimento:
+
+| Tecla | Vai para |
+|---|---|
+| `]f` / `[f` | próxima função / função anterior |
+| `]c` / `[c` | próxima classe / classe anterior |
+| `]a` / `[a` | próximo parâmetro / parâmetro anterior |
+
+## 18. Dobras — nvim-ufo + statuscol
+
+| Tecla | Ação |
+|---|---|
+| `zR` / `zM` | abrir / fechar todas as dobras |
+| `zr` | abrir dobras (exceto kinds) |
+| `<leader>K` | pré-visualizar a dobra fechada sob o cursor |
+
+A coluna da esquerda mostra a coluna de fold (sem dígitos), os sinais e o número
+da linha — clique no fold abre/fecha, clique no sinal de diagnóstico abre o float.
+
+## 19. Busca, pulo e yank
+
+| Tecla | Ação |
+|---|---|
+| `/` `n` `N` `*` `#` | busca com contador tipo `3/47` na barra (nvim-hlslens) |
+| `f` | **pula pra qualquer char da tela** (hop, não só a linha) |
+| `<Esc>` | cancela o pulo do hop |
+| `<leader>p` | histórico de yank (picker) |
+| `[y` / `]y` | item anterior/próximo do histórico de yank (após colar) |
+| `p` / `P` | colar com destaque do texto colado (yanky) |
+
+> Pra voltar ao `f` nativo (só na linha): apague o keymap em `lua/plugins/hop.lua`.
+
+## 20. Atalhos gerais extras
+
+| Tecla | Ação |
+|---|---|
+| `Alt+j` / `Alt+k` | mover linha (ou seleção) pra baixo/cima |
+| `Ctrl+u` (insert) | palavra → MAIÚSCULAS |
+| `<leader><Space>` (duas barras de espaço) | remover espaços no fim das linhas |
+| `ZR` | recarregar a config sem reiniciar o nvim |
+| `<space>Q` | diagnósticos do buffer atual → quickfix |
+| `<space>gd` / `<space>gr` / `<space>gi` | preview de definições/referências/implementações (glance) |
+
+## 21. Comandos extras
+
+| Comando | Ação |
+|---|---|
+| `:Redir hi` | captura a saída de um comando numa aba nova |
+| `:CopyPath relative` | copia caminho (aceita `nameonly`/`relative`/`absolute`) |
+| `:Datetime` / `:Datetime 1234567890` | data atual ou timestamp → data |
+| `:JSONFormat` | formata JSON (também com `:'<,'>JSONFormat`) |
+| `:Edit lua/plugins/*.lua` | abre vários arquivos de uma vez |
+| `:StripTrailingWhitespace` | remove espaços no fim das linhas |
+| `:ColorizerToggle` | liga/desliga cores `#ff0000` pintadas |
+
+## 22. Melhorias visuais (sem tecla)
+
+- **Realce do símbolo sob o cursor** em todas as ocorrências (vim-illuminate).
+- **Barra de progresso do LSP** no canto (fidget).
+- **Winbar** com o caminho do arquivo estilo VSCode (dropbar).
+- **Guia de indentação** do escopo atual (mini.indentscope).
+- **Quickfix** com preview (nvim-bqf).
+- **Diagnósticos**: sem texto inline; float automático sob o cursor (vira e fecha sozinho).
+- **`vim.*` completion** nos `.lua` da config (lazydev).

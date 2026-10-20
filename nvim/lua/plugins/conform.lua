@@ -16,9 +16,16 @@ conform.setup({
         cpp = { "clang-format" },
         sh = { "shfmt" },
     },
-    -- Formata ao salvar (com fallback para o LSP se o formatador não estiver instalado)
-    format_on_save = {
-        timeout_ms = 1000,
-        lsp_fallback = true,
-    },
+    -- Formatamento AUTOMATICO no :w desligado de proposito.
+    --
+    -- Motivo: os formatadores acima usam estilos proprios que brigam com os
+    -- globals de config/options.lua (shiftwidth=4, expandtab=true):
+    --   - clang-format (estilo LLVM) indenta com 2 espacos
+    --   - black falha em arquivos com tabs e espacos misturados
+    --       (InconsistentUseOfTabsAndSpaces) e ai o lsp_fallback assume com
+    --       outro estilo, deixando tabs e espacos alternando no mesmo arquivo
+    -- Resultado: :w reescrevia a indentacao do arquivo inteiro sem voce pedir.
+    --
+    -- Para formatar, use <space>f (mapeado em config/lspconfig.lua:31).
+    format_on_save = false,
 })

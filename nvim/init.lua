@@ -18,7 +18,7 @@ Plug('kylechui/nvim-surround')
 Plug('lewis6991/gitsigns.nvim')
 Plug('numToStr/Comment.nvim')
 Plug('ibhagwan/fzf-lua')
-Plug('MeanderingProgrammer/render-markdown.nvim')
+Plug('OXY2DEV/markview.nvim')
 Plug('scottmckendry/cyberdream.nvim')
 Plug('folke/tokyonight.nvim')
 Plug('numToStr/FTerm.nvim')
@@ -26,6 +26,31 @@ Plug('folke/trouble.nvim')
 Plug('folke/todo-comments.nvim')
 Plug('folke/which-key.nvim')
 Plug('mfussenegger/nvim-jdtls')
+
+-- Folding + statuscolumn (roubado do jdhao/nvim-config)
+Plug('kevinhwang91/promise-async')
+Plug('kevinhwang91/nvim-ufo')
+Plug('luukvbaal/statuscol.nvim')
+
+-- Text objects via treesitter (branch main, combina com o nvim-treesitter main)
+Plug('nvim-treesitter/nvim-treesitter-textobjects', { ['branch'] = 'main' })
+
+-- Quickfix, busca e progresso do LSP
+Plug('kevinhwang91/nvim-bqf')
+Plug('kevinhwang91/nvim-hlslens')
+Plug('j-hui/fidget.nvim')
+
+-- Navegação inteligente
+Plug('dnlhc/glance.nvim')
+Plug('smoka7/hop.nvim')
+Plug('folke/lazydev.nvim')
+
+-- Edição e UX
+Plug('gbprod/yanky.nvim')
+Plug('RRethy/vim-illuminate')
+Plug('catgoose/nvim-colorizer.lua')
+Plug('Bekaboo/dropbar.nvim')
+Plug('nvim-mini/mini.indentscope')
 
 -- Temas alternativos (descomente se quiser trocar):
 -- Plug('AlexvZyl/nordic.nvim', { ['branch'] = 'main' })
@@ -60,6 +85,8 @@ Plug('rafamadriz/friendly-snippets')
 vim.call('plug#end')
 require("config.mappings")
 require("config.options")
+require("config.diagnostics")
+require("config.commands")
 
 require("plugins.web-devicons")
 require("plugins.lualine")
@@ -71,7 +98,6 @@ require("plugins.surround")
 require("plugins.gitsigns")
 require("plugins.comment")
 require("plugins.fzf-lua")
-require("plugins.render-markdown")
 require("plugins.trouble")
 require("plugins.persistence")
 require("plugins.todo-comments")
@@ -80,9 +106,26 @@ require("plugins.jdtls")
 require("plugins.tokyonight")
 require("plugins.dap")
 require("plugins.cyberdream")
+-- Markdown renderizado no buffer (deve carregar depois do colorscheme)
+require("plugins.markview")
 require("plugins.FTerm")
 require("plugins.conform")
 require("plugins.lint")
 require("plugins.tool-installer")
 require("plugins.lspconfig")
 require("plugins.cmp")
+
+-- == Extras (baseado no jdhao/nvim-config) ==
+require("plugins.ufo")         -- statuscolumn + dobras (nvim-ufo)
+require("plugins.textobjects") -- af/if, ]f, ]c, ]a via treesitter
+require("plugins.bqf")         -- quickfix melhorado
+require("plugins.hlslens")     -- contador de buscas (3/47)
+require("plugins.fidget")      -- progresso do LSP
+require("plugins.glance")      -- <space>gd/gr/gi com preview
+require("plugins.hop")         -- f = pulo na tela toda
+require("plugins.lazydev")     -- completion vim.* em arquivos .lua
+require("plugins.yanky")       -- histórico de yank ([y/]y, <leader>p)
+require("plugins.illuminate")  -- realça símbolo sob o cursor
+require("plugins.colorizer")   -- #ff0000 pintado na cor real
+require("plugins.dropbar")     -- winbar com caminho do arquivo
+require("plugins.indentscope") -- guia de indentação

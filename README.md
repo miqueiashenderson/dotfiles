@@ -23,10 +23,11 @@ Configs pessoais de **Neovim + Kitty + bash** — tema único `tokyonight-night`
 
 ## Requisitos
 
-- Neovim **0.11+** (uso `vim.lsp.config` + `vim.lsp.enable`)
+- Neovim **0.12+** (uso `vim.lsp.config` + `vim.lsp.enable` e a branch **main** do nvim-treesitter)
 - [vim-plug](https://github.com/junegunn/vim-plug) (gerenciador de plugins)
+- `tree-sitter-cli` (obrigatório pra instalar parsers do treesitter)
 - Kitty (opcional, mas o tema foi casado com ele)
-- Arch Linux (ou adapte): `sudo pacman -S kitty zoxide eza bat starship fzf git nodejs npm python-pip jdtls`
+- Arch Linux (ou adapte): `sudo pacman -S kitty zoxide eza bat starship fzf git nodejs npm python-pip jdtls tree-sitter-cli gcc`
 - Nerd Font (ex.: `FiraCode Nerd Font`)
 
 ## Instalação
@@ -56,11 +57,15 @@ O `install.sh` faz backup automático (`~/.config/nvim.bak.<data>`) se já exist
 
 | Área | O que tem |
 |---|---|
-| LSP | `pyright`, `clangd`, `lua_ls` (mason) + Java via `nvim-jdtls` |
+| LSP | `pyright`, `clangd`, `lua_ls` (mason) + Java via `nvim-jdtls` + `glance` (`<space>gd/gr/gi`), progresso (fidget), `vim.*` completion (lazydev) |
 | Formato/lint | `conform.nvim` (stylua/black/prettier/…) + `nvim-lint` (ruff/shellcheck), auto-instalados |
 | Debug | `nvim-dap` + UI (`F5/F10/F11/F12`, `<leader>b`), teste Java (`<leader>dt/dn`) |
-| Busca | `fzf-lua` (`<leader>ff/fg/fb/fd`), `trouble`, `todo-comments` |
+| Busca | `fzf-lua` (`<leader>ff/fg/fb/fd`), contador `3/47` (hlslens), `trouble`, `todo-comments` |
 | Arquivos | `nvim-tree` (`Ctrl+n`), sessões por pasta (`persistence`, `<leader>qs`) |
+| Dobras | `nvim-ufo` + statuscolumn (`zR`/`zM`, peek com `<leader>K`) |
+| Text objects | treesitter: `af/if`, `ac/ic`, `aa/ia` + movimento `]f ]c ]a` |
+| Edição | `f` = pulo na tela toda (hop), histórico de yank (`[y ]y`, `<leader>p`), mover linha `Alt+j/k`, colorizer, illuminate, dropbar, indentscope |
+| Diagnósticos | sem texto inline; float sob o cursor + `<space>Q` → quickfix |
 | Terminal | FTerm flutuante (`Alt+i`), split estilo VSCode |
 | Tema | `tokyonight-night` no nvim + kitty, fundo translúcido |
 
@@ -69,8 +74,11 @@ O `install.sh` faz backup automático (`~/.config/nvim.bak.<data>`) se já exist
 Leader = `Espaço`. Detalhes completos nos `*-keymaps.md`.
 
 - `Tab`/`Shift+Tab` buffers · `Ctrl+n` tree · `Alt+i` terminal
-- `<leader>ff/fg` arquivos/grep · `<leader>tx` diagnósticos
-- `gd/gr/K` LSP · `Espaço ca` code action · `Espaço f` formatar
+- `<leader>ff/fg` arquivos/grep · `<leader>xx` diagnósticos
+- `gd/gr/K` LSP · `Espaço ca` code action · `Espaço f` formatar · `Espaço gd` glance
+- `af/if` text object (função) · `]f/[f` próxima função · `zR/zM` dobras
+- `f` pula na tela toda (hop) · `[y/]y` histórico de yank
+- `Alt+j/k` mover linha · `Espaço Espaço` limpar espaços · `ZR` recarregar config
 - `F5` debug · `<leader>b` breakpoint · `<leader>qs` sessão
 
 ## Manutenção
@@ -87,4 +95,7 @@ Leader = `Espaço`. Detalhes completos nos `*-keymaps.md`.
 - `nordic`/`gruvbox`/`eldritch`/`decay`/`oxocarbon` ficam comentados como temas alternativos.
 - Sessões salvas em `~/.local/state/nvim/sessions/` (por pasta, fora do git).
 - `allow_remote_control socket-only` no kitty existe p/ futura navegação unificada nvim↔kitty (não usado hoje).
+- **treesitter na branch main**: o `ensure_installed` antigo não existe mais — os parsers são listados em `ts.install{}` em `lua/plugins/nvim-treesitter.lua` e o realce liga por autocmd `FileType`. Exige `tree-sitter-cli`.
+- **Diagnósticos sem texto inline** (`virtual_text = false`): o float aparece sozinho sob o cursor. Pra voltar ao texto inline, edite `lua/config/diagnostics.lua`.
+- **`f` do hop**: pula pra qualquer lugar da tela (não só a linha). Reverta removendo o keymap em `lua/plugins/hop.lua`.
 # dotfiles

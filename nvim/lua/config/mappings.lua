@@ -32,27 +32,12 @@ map("n", "<leader>fb", "<Cmd>FzfLua buffers<CR>", vim.tbl_extend("force", opts, 
 map("n", "<leader>fd", "<Cmd>FzfLua diagnostics_document<CR>", vim.tbl_extend("force", opts, { desc = "Diagnósticos" }))
 
 -- trouble.nvim mappings
--- Prefixo `t` (não `x`): `Espaço x` é exclusivo do fechar buffer (BufferClose),
--- evitando a espera do timeoutlen quando `x` também era prefixo do Trouble.
-map("n", "<leader>tx", "<Cmd>Trouble diagnostics toggle<CR>", opts)
-map("n", "<leader>tw", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", opts)
-map("n", "<leader>tt", "<Cmd>Trouble todo toggle<CR>", vim.tbl_extend("force", opts, { desc = "TODOs" }))
+map("n", "<leader>xx", "<Cmd>Trouble diagnostics toggle<CR>", opts)
+map("n", "<leader>xw", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", opts)
+map("n", "<leader>xt", "<Cmd>Trouble todo toggle<CR>", vim.tbl_extend("force", opts, { desc = "TODOs" }))
 
 -- FTerm mappings (floating terminal)
--- Alt+i (normal): foca o FTerm se já estiver aberto; senão, abre.
--- Nunca fecha por engano — fechar é com Esc (ou Alt+i) dentro do terminal.
-vim.keymap.set('n', '<A-i>', function()
-    local ok, FTerm = pcall(require, "FTerm")
-    if not ok then return end
-    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-        if vim.api.nvim_get_option_value('filetype', { buf = vim.api.nvim_win_get_buf(win) }) == 'FTerm' then
-            vim.api.nvim_set_current_win(win)
-            vim.cmd("startinsert")
-            return
-        end
-    end
-    FTerm.toggle() -- não está aberto: abre
-end)
+vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 -- Bottom-split terminal (estilo VSCode)
@@ -81,14 +66,34 @@ map("n", "<C-A-i>", function()
 end, opts)
 
 map("t", "<C-A-i>", "<C-\\><C-n><Cmd>close<CR>", opts)
--- Esc no terminal: no FTerm, fecha a janela flutuante e volta ao código
--- (a sessão do terminal continua rodando; Alt+i reabre em 1 tecla).
--- No terminal bottom-split (filetype `term`), o close() do FTerm é no-op,
--- então só sai do insert mode como antes.
--- Obs.: para interromper um processo dentro do terminal use Ctrl+C (o Esc
--- nunca chega até o processo, ele é capturado pelo nvim).
-map("t", "<Esc>", "<C-\\><C-n><Cmd>lua require('FTerm').close()<CR>", opts)
+map("t", "<Esc>", "<C-\\><C-n>", opts)
 -- Navegar do terminal para o código sem precisar apertar Esc antes
 map("t", "<C-k>", "<C-\\><C-n><Cmd>wincmd k<CR>", opts)
 map("t", "<C-h>", "<C-\\><C-n><Cmd>wincmd h<CR>", opts)
 map("t", "<C-l>", "<C-\\><C-n><Cmd>wincmd l<CR>", opts)
+
+-- == Atalhos roubados do jdhao/nvim-config ==
+
+-- Mover linha/bloco com Alt+j / Alt+k
+map("n", "<A-j>", ":m .+1<CR>==", { noremap = true, desc = "Mover linha pra baixo" })
+map("n", "<A-k>", ":m .-2<CR>==", { noremap = true, desc = "Mover linha pra cima" })
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Mover seleção pra baixo" })
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Mover seleção pra cima" })
+
+-- Palavra sob o cursor → MAIÚSCULAS (no insert; substitui o <C-u> nativo)
+map("i", "<C-u>", "<Esc>viwUa", { noremap = true, desc = "Palavra → MAIÚSCULAS" })
+
+-- Remove espaços no fim das linhas (:StripTrailingWhitespace)
+map("n", "<leader><Space>", "<Cmd>StripTrailingWhitespace<CR>",
+    { noremap = true, desc = "Remover espaços no fim das linhas" })
+
+-- Recarregar a config sem reiniciar o nvim
+map("n", "ZR", function()
+    for name in pairs(package.loaded) do
+        if name:match("^config%..*") or name:match("^plugins%..*") then
+            package.loaded[name] = nil
+        end
+    end
+    vim.cmd("source $MYVIMRC")
+    vim.notify("Config recarregada (ZR)")
+end, { desc = "Recarregar configuração do nvim" })
