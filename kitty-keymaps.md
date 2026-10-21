@@ -1,6 +1,6 @@
 # Kitty — Guia de Keymaps
 
-> Fonte: `~/.config/kitty/kitty.conf`. Tema ativo: `tokyonight_night.conf` (combina com nvim `tokyonight-night`).
+> Fonte: `~/.config/kitty/kitty.conf`. Tema ativo: `cyberdream.conf` (combina com nvim `cyberdream`).
 > Recarregar config sem fechar: `Ctrl+Shift+r`.
 
 ## 1. Clipboard
@@ -41,7 +41,7 @@ Título da aba: `índice:nome` (`tab_title_template "{index}:{title}"`), ex.: `1
 |---|---|
 | `Ctrl+Shift+r` | Recarregar `kitty.conf` na hora |
 
-Trocar tema: edite o bloco final do `kitty.conf` — `include tokyonight_night.conf` ativo; alternativas comentadas `eldritch.conf`, `decay.conf`, `oxocarbon.conf`. Depois `Ctrl+Shift+r`.
+Trocar tema: edite o bloco final do `kitty.conf` — `include cyberdream.conf` ativo; alternativas `tokyonight_night.conf`, `eldritch.conf`, `decay.conf`, `oxocarbon.conf`. Depois `Ctrl+Shift+r`.
 
 ## 5. Padrões do kitty que continuam valendo (não remapeados)
 

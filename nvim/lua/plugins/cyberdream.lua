@@ -12,7 +12,8 @@ cyberdream.setup({
     hide_fillchars = true,
 })
 
--- Aplica o tema (carrega depois do tokyonight para ter prioridade)
+-- Aplica o tema (carrega cedo no init.lua, antes da lualine/barbar,
+-- para que o theme = 'auto' da lualine use a paleta cyberdream)
 vim.cmd.colorscheme("cyberdream")
 
 -- Garante a transparência em alguns buffers especiais (árvore de arquivos, etc.)

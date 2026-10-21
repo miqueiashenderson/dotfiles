@@ -91,6 +91,10 @@ require("config.options")
 require("config.diagnostics")
 require("config.commands")
 
+-- Tema (cyberdream) antes de qualquer plugin de UI: garante que a lualine
+-- (theme = 'auto') e a barbar resolvam as cores com o tema certo.
+require("plugins.cyberdream")
+
 require("plugins.web-devicons")
 require("plugins.lualine")
 require("plugins.barbar")
@@ -106,9 +110,7 @@ require("plugins.persistence")
 require("plugins.todo-comments")
 require("plugins.which-key")
 require("plugins.jdtls")
-require("plugins.tokyonight")
 require("plugins.dap")
-require("plugins.cyberdream")
 -- Markdown renderizado no buffer (deve carregar depois do colorscheme)
 require("plugins.markview")
 require("plugins.FTerm")

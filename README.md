@@ -1,6 +1,6 @@
 # dotfiles
 
-Configs pessoais de **Neovim + Kitty + bash** — tema único `tokyonight-night`, leader `Espaço`, fluxo tudo-dentro-do-nvim (terminal flutuante com `Alt+i`).
+Configs pessoais de **Neovim + Kitty + bash** — tema único `cyberdream`, leader `Espaço`, fluxo tudo-dentro-do-nvim (terminal flutuante com `Alt+i`).
 
 ## Estrutura
 
@@ -15,7 +15,8 @@ Configs pessoais de **Neovim + Kitty + bash** — tema único `tokyonight-night`
 │       └── plugins/      # um arquivo por plugin
 ├── kitty/                # -> ~/.config/kitty
 │   ├── kitty.conf
-│   └── tokyonight_night.conf
+│   ├── cyberdream.conf   # tema ativo
+│   └── *.conf            # temas alternativos (tokyonight, eldritch…)
 ├── nvim-keymaps.md       # guia de atalhos do nvim
 ├── kitty-keymaps.md      # guia de atalhos do kitty
 └── terminal-keymaps.md   # guia do bash/fzf
@@ -68,7 +69,7 @@ O `install.sh` faz backup automático (`~/.config/nvim.bak.<data>`) se já exist
 | Movimento | scroll suave `Ctrl+d/u/f/b` + `zt/zz/zb` (neoscroll), rastro de cursor no kitty (`cursor_trail`) |
 | Diagnósticos | sem texto inline; float sob o cursor + `<space>Q` → quickfix |
 | Terminal | FTerm flutuante (`Alt+i`), split estilo VSCode |
-| Tema | `tokyonight-night` no nvim + kitty, fundo translúcido |
+| Tema | `cyberdream` no nvim + kitty (lualine incluso), fundo translúcido |
 
 ## Atalhos (resumo)
 
@@ -93,7 +94,7 @@ Leader = `Espaço`. Detalhes completos nos `*-keymaps.md`.
 
 ## Notas
 
-- `nordic`/`gruvbox`/`eldritch`/`decay`/`oxocarbon` ficam comentados como temas alternativos.
+- `tokyonight-night`/`nordic`/`gruvbox`/`eldritch`/`decay`/`oxocarbon` ficam como temas alternativos (o ativo é `cyberdream`, trocando o `require` em `init.lua` / o `include` no `kitty.conf`).
 - Sessões salvas em `~/.local/state/nvim/sessions/` (por pasta, fora do git).
 - `allow_remote_control socket-only` no kitty existe p/ futura navegação unificada nvim↔kitty (não usado hoje).
 - **treesitter na branch main**: o `ensure_installed` antigo não existe mais — os parsers são listados em `ts.install{}` em `lua/plugins/nvim-treesitter.lua` e o realce liga por autocmd `FileType`. Exige `tree-sitter-cli`.

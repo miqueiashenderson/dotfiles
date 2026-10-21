@@ -30,7 +30,7 @@ mkdir -p "$HOME/.config"
 if [[ "$MODE" == "copy" ]]; then
   mkdir -p "$HOME/.config/nvim" "$HOME/.config/kitty"
   cp -r "$DOT/nvim/." "$HOME/.config/nvim/"
-  cp "$DOT/kitty/kitty.conf" "$DOT/kitty/tokyonight_night.conf" "$HOME/.config/kitty/"
+  cp "$DOT"/kitty/*.conf "$HOME/.config/kitty/"
   echo "copiado: ~/.config/nvim e ~/.config/kitty"
 else
   ln -sfn "$DOT/nvim" "$HOME/.config/nvim"
