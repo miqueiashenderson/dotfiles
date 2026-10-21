@@ -21,6 +21,7 @@ Plug('ibhagwan/fzf-lua')
 Plug('OXY2DEV/markview.nvim')
 Plug('scottmckendry/cyberdream.nvim')
 Plug('folke/tokyonight.nvim')
+Plug('rebelot/kanagawa.nvim')
 Plug('numToStr/FTerm.nvim')
 Plug('folke/trouble.nvim')
 Plug('folke/todo-comments.nvim')
@@ -90,10 +91,15 @@ require("config.mappings")
 require("config.options")
 require("config.diagnostics")
 require("config.commands")
+require("config.theme")     -- :Tema <nome> + fundo translúcido em qualquer tema
 
 -- Tema (cyberdream) antes de qualquer plugin de UI: garante que a lualine
 -- (theme = 'auto') e a barbar resolvam as cores com o tema certo.
 require("plugins.cyberdream")
+
+-- Temas alternativos: só CONFIGURAM (não aplicam) — ative-os com :Tema <nome>
+require("plugins.tokyonight") -- :Tema tokyonight-night
+require("plugins.kanagawa")   -- :Tema kanagawa
 
 require("plugins.web-devicons")
 require("plugins.lualine")

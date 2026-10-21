@@ -246,6 +246,7 @@ da linha — clique no fold abre/fecha, clique no sinal de diagnóstico abre o f
 | `:Edit lua/plugins/*.lua` | abre vários arquivos de uma vez |
 | `:StripTrailingWhitespace` | remove espaços no fim das linhas |
 | `:ColorizerToggle` | liga/desliga cores `#ff0000` pintadas |
+| `:Tema kanagawa` | troca o tema do nvim **e do kitty** na hora (sem reiniciar) — `Tab` lista os temas |
 
 ## 22. Melhorias visuais (sem tecla)
 

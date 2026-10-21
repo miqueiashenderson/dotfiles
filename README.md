@@ -101,4 +101,5 @@ Leader = `Espaço`. Detalhes completos nos `*-keymaps.md`.
 - **Diagnósticos sem texto inline** (`virtual_text = false`): o float aparece sozinho sob o cursor. Pra voltar ao texto inline, edite `lua/config/diagnostics.lua`.
 - **`f` do hop**: pula pra qualquer lugar da tela (não só a linha). Reverta removendo o keymap em `lua/plugins/hop.lua`.
 - **kitty**: tema atual é `cyberdream` (`include cyberdream.conf` no kitty.conf); rastro de cursor com `cursor_trail 6` (exige kitty >= 0.37).
+- **Testando temas**: `:Tema <nome>` troca o tema do nvim e do kitty ao vivo (ex.: `kanagawa`, `tokyonight-night`, `cyberdream`; `Tab` completa). A troca **não persiste** no nvim ao reiniciar (padrão = cyberdream, definido no `init.lua`); no kitty ela persiste (a linha `include` é reescrita). Exige kitty com `listen_on` (já configurado). Temas do kitty em `kitty/*.conf`.
 # dotfiles

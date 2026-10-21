@@ -13,8 +13,9 @@ tokyonight.setup({
     },
 })
 
--- Reaplica o tema com o setup acima + garante transparência (inclui tree)
-vim.cmd.colorscheme("tokyonight-night")
-for _, g in ipairs({ "Normal", "NormalFloat", "NormalNC", "NvimTreeNormal", "NvimTreeNormalNC", "NvimTreeEndOfBuffer", "NvimTreeWinSeparator" }) do
-    vim.api.nvim_set_hl(0, g, { bg = "none" })
-end
+-- NÃO aplica mais o tema na carga (o ativo é cyberdream, no init.lua).
+-- As opções acima continuam valendo quando você usa: :Tema tokyonight-night
+-- vim.cmd.colorscheme("tokyonight-night")
+-- for _, g in ipairs({ "Normal", "NormalFloat", "NormalNC", "NvimTreeNormal", "NvimTreeNormalNC", "NvimTreeEndOfBuffer", "NvimTreeWinSeparator" }) do
+--     vim.api.nvim_set_hl(0, g, { bg = "none" })
+-- end

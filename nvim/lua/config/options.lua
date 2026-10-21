@@ -44,9 +44,10 @@ o.foldenable = true
 -- Diagnósticos (virtual_text off + float no CursorHold) ficam em
 -- lua/config/diagnostics.lua
 
--- Tema: cyberdream (aplicado por require("plugins.cyberdream") no init.lua,
--- antes dos plugins de UI). Pra trocar de tema no futuro, troque esse require
--- por require("plugins.tokyonight") no init.lua.
+-- Tema padrão: cyberdream (require("plugins.cyberdream") no init.lua,
+-- antes dos plugins de UI). Para trocar o padrão no futuro: aplique
+-- vim.cmd.colorscheme("<nome>") logo após os requires de tema no init.lua
+-- (o último colorscheme aplicado vence). Para testar sem reiniciar: :Tema
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
