@@ -22,6 +22,12 @@ Plug('OXY2DEV/markview.nvim')
 Plug('scottmckendry/cyberdream.nvim')
 Plug('folke/tokyonight.nvim')
 Plug('rebelot/kanagawa.nvim')
+
+-- Outros temas pra testar com :Tema (nenhum aplica na carga)
+Plug('eldritch-theme/eldritch.nvim')
+Plug('nyoom-engineering/oxocarbon.nvim')
+Plug('EdenEast/nightfox.nvim')      -- variants: carbonfox etc
+Plug('olivercederborg/poimandres.nvim')
 Plug('numToStr/FTerm.nvim')
 Plug('folke/trouble.nvim')
 Plug('folke/todo-comments.nvim')
@@ -100,6 +106,10 @@ require("plugins.cyberdream")
 -- Temas alternativos: só CONFIGURAM (não aplicam) — ative-os com :Tema <nome>
 require("plugins.tokyonight") -- :Tema tokyonight-night
 require("plugins.kanagawa")   -- :Tema kanagawa
+require("plugins.eldritch")   -- :Tema eldritch
+require("plugins.oxocarbon")  -- :Tema oxocarbon (sem options)
+require("plugins.nightfox")   -- :Tema carbonfox
+require("plugins.poimandres") -- :Tema poimandres
 
 require("plugins.web-devicons")
 require("plugins.lualine")

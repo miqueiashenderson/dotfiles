@@ -1,0 +1,3 @@
+-- oxocarbon: não tem API de setup — é só o colorscheme.
+-- O fundo translúcido vem do autocmd ColorScheme em lua/config/theme.lua.
+-- Ative com: :Tema oxocarbon

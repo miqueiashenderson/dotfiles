@@ -99,7 +99,8 @@ Leader = `Espaço`. Detalhes completos nos `*-keymaps.md`.
 - `allow_remote_control socket-only` no kitty existe p/ futura navegação unificada nvim↔kitty (não usado hoje).
 - **treesitter na branch main**: o `ensure_installed` antigo não existe mais — os parsers são listados em `ts.install{}` em `lua/plugins/nvim-treesitter.lua` e o realce liga por autocmd `FileType`. Exige `tree-sitter-cli`.
 - **Diagnósticos sem texto inline** (`virtual_text = false`): o float aparece sozinho sob o cursor. Pra voltar ao texto inline, edite `lua/config/diagnostics.lua`.
+- **cyberdream customizado**: o roxo da paleta foi clareado (`purple = "#d6adff"`, contraste 5.3→9.6:1) porque `Operator`/`Type` ficavam difíceis de ler — ver `lua/plugins/cyberdream.lua` (alternativas comentadas no mesmo arquivo; recarregue com `ZR`).
 - **`f` do hop**: pula pra qualquer lugar da tela (não só a linha). Reverta removendo o keymap em `lua/plugins/hop.lua`.
 - **kitty**: tema atual é `cyberdream` (`include cyberdream.conf` no kitty.conf); rastro de cursor com `cursor_trail 6` (exige kitty >= 0.37).
-- **Testando temas**: `:Tema <nome>` troca o tema do nvim e do kitty ao vivo (ex.: `kanagawa`, `tokyonight-night`, `cyberdream`; `Tab` completa). A troca **não persiste** no nvim ao reiniciar (padrão = cyberdream, definido no `init.lua`); no kitty ela persiste (a linha `include` é reescrita). Exige kitty com `listen_on` (já configurado). Temas do kitty em `kitty/*.conf`.
+- **Testando temas**: `:Tema <nome>` troca o tema do nvim e do kitty ao vivo — `Tab` completa. Instalados: `cyberdream` (padrão), `tokyonight-night`, `kanagawa`/`kanagawa-dragon`, `eldritch`/`eldritch-dark`, `oxocarbon`, `carbonfox`, `poimandres` (+ `decay` só no kitty). A troca **não persiste** no nvim ao reiniciar (padrão = cyberdream, definido no `init.lua`); no kitty ela persiste (a linha `include` é reescrita). Exige kitty com `listen_on` (já configurado). Conf de todos em `kitty/*.conf`.
 # dotfiles
